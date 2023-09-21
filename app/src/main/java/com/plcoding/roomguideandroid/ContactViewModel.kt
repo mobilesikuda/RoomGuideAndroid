@@ -11,13 +11,13 @@ class ContactViewModel(
     private val dao: ContactDao
 ): ViewModel() {
 
-    private val _sortType = MutableStateFlow(SortType.FIRST_NAME)
+    private val _sortType = MutableStateFlow(SortType.FIRST)
     private val _contacts = _sortType
         .flatMapLatest { sortType ->
             when(sortType) {
-                SortType.FIRST_NAME -> dao.getContactsOrderedByFirstName()
-                SortType.LAST_NAME -> dao.getContactsOrderedByLastName()
-                SortType.PHONE_NUMBER -> dao.getContactsOrderedByPhoneNumber()
+                SortType.FIRST -> dao.getContactsOrderedByFirstName()
+                SortType.LAST -> dao.getContactsOrderedByLastName()
+                SortType.NUMBER -> dao.getContactsOrderedByPhoneNumber()
             }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(), emptyList())

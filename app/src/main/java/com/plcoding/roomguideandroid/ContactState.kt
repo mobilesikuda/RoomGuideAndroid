@@ -6,5 +6,5 @@ data class ContactState(
     val lastName: String = "",
     val phoneNumber: String = "",
     val isAddingContact: Boolean = false,
-    val sortType: SortType = SortType.FIRST_NAME
+    val sortType: SortType = SortType.FIRST
 )
